@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ines Aouissaoui — AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0b;--white:#f8f6f2;--coral:#ff6b4a;--lavender:#b4a0ff;--mint:#4ae8c4;--gold:#ffd166;--sky:#56c5ff;--syne:'Syne',sans-serif;--bask:'Libre Baskerville',serif;--mono:'Space Mono',monospace}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--black);color:var(--white);font-family:var(--syne);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--coral);color:var(--black)}
+.cursor{position:fixed;width:20px;height:20px;border:2px solid var(--coral);border-radius:50%;pointer-events:none;z-index:10000;transition:transform .15s,width .2s,height .2s,border-color .2s;transform:translate(-50%,-50%)}
+.cursor.hover{width:50px;height:50px;border-color:var(--lavender);mix-blend-mode:difference}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference}
+.nav-name{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--white);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-family:var(--mono);position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--coral);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-gradient{position:absolute;inset:0;z-index:0}
+.hero-gradient .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;animation:float 8s infinite}
+.blob-1{width:500px;height:500px;background:var(--coral);top:-10%;right:-5%}
+.blob-2{width:400px;height:400px;background:var(--lavender);bottom:-15%;left:10%;animation-delay:-3s}
+.blob-3{width:300px;height:300px;background:var(--mint);top:40%;left:50%;animation-delay:-5s;opacity:.25!important}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+.hero-content{position:relative;z-index:2;padding:0 40px;max-width:1200px;margin:0 auto;width:100%}
+.hero-label{font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:20px;opacity:0;animation:slideUp .8s .2s forwards}
+.hero h1{font-size:clamp(48px,8vw,110px);font-weight:800;line-height:.92;letter-spacing:-3px;opacity:0;animation:slideUp .8s .4s forwards}
+.hero h1 .italic{font-family:var(--bask);font-style:italic;font-weight:400;color:var(--coral)}
+.hero-sub{font-size:18px;color:rgba(248,246,242,.5);max-width:500px;line-height:1.7;margin-top:32px;font-weight:400;opacity:0;animation:slideUp .8s .6s forwards}
+.hero-cta{display:flex;gap:16px;margin-top:40px;opacity:0;animation:slideUp .8s .8s forwards}
+.cta-primary{padding:16px 36px;background:var(--coral);color:var(--black);font-family:var(--syne);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;border-radius:50px;cursor:pointer;transition:all .3s;text-decoration:none}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,107,74,.3)}
+.cta-outline{padding:16px 36px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);font-family:var(--syne);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:50px;cursor:pointer;transition:all .3s;text-decoration:none}
+.cta-outline:hover{border-color:var(--lavender);color:var(--lavender)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;gap:8px;animation:bob 2s infinite}
+.hero-scroll .arrow{width:1px;height:30px;background:linear-gradient(transparent,rgba(255,255,255,.3))}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.marquee{padding:30px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 25s linear infinite}
+.marquee-item{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.15);padding:0 30px;font-weight:600}
+.marquee-item .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:20px;vertical-align:middle}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.section{padding:100px 40px;max-width:1200px;margin:0 auto;position:relative}
+.section-num{font-family:var(--mono);font-size:80px;font-weight:700;color:rgba(255,255,255,.03);position:absolute;top:60px;right:40px}
+.section-label{font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+.section-title{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:48px}
+.section-title .accent{color:var(--coral)}
+.projects-container{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1);border:1px solid rgba(255,255,255,.06)}
+.project:hover{transform:translateY(-6px)}
+.project-bg{height:280px;position:relative;overflow:hidden}
+.project-bg .overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--black) 0%,transparent 60%);z-index:1}
+.project-bg .color-field{position:absolute;inset:0;opacity:.15;transition:opacity .5s}
+.project:hover .color-field{opacity:.25}
+.project-info{padding:24px 28px 28px;position:relative;z-index:2;margin-top:-40px}
+.project-num{font-family:var(--mono);font-size:10px;color:var(--coral);letter-spacing:2px;margin-bottom:6px}
+.project-name{font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
+.project-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:14px}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px}
+.project-tag{padding:4px 12px;border:1px solid rgba(255,255,255,.08);border-radius:50px;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.4);font-family:var(--mono)}
+.project-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);font-weight:600;text-decoration:none;transition:gap .3s}
+.project-link:hover{gap:10px}
+.proj-coral .color-field{background:linear-gradient(135deg,var(--coral),#ff8a70)}
+.proj-lavender .color-field{background:linear-gradient(135deg,var(--lavender),#d4c4ff)}
+.proj-mint .color-field{background:linear-gradient(135deg,var(--mint),#2dd4a8)}
+.proj-gold .color-field{background:linear-gradient(135deg,var(--gold),#ffe0a0)}
+.proj-sky .color-field{background:linear-gradient(135deg,var(--sky),#80d8ff)}
+.proj-pink .color-field{background:linear-gradient(135deg,#ff6b9d,#c44dff)}
+.proj-green .color-field{background:linear-gradient(135deg,#34d399,#0ea5e9)}
+.project-featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.project-featured:hover{transform:translateY(-6px)}
+.project-featured .project-bg{height:100%;min-height:360px}
+.project-featured .project-info{padding:40px;display:flex;flex-direction:column;justify-content:center;margin-top:0}
+.project-featured .project-name{font-size:28px}
+.project-featured .project-desc{font-size:14px;max-width:400px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text{font-size:16px;color:rgba(255,255,255,.55);line-height:1.9}
+.about-text p+p{margin-top:20px}
+.about-text strong{color:var(--white);font-weight:600}
+.skills-wrap{display:flex;flex-direction:column;gap:10px}
+.skill-row{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(255,255,255,.06);border-radius:10px;transition:all .3s}
+.skill-row:hover{border-color:rgba(255,107,74,.2);background:rgba(255,107,74,.03)}
+.skill-icon{font-size:20px;width:36px;text-align:center}
+.skill-info .skill-name{font-size:13px;font-weight:600}
+.skill-info .skill-tools{font-size:11px;color:rgba(255,255,255,.3);font-family:var(--mono);margin-top:2px}
+.contact{padding:120px 40px;text-align:center;position:relative;overflow:hidden}
+.blob-contact{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.15}
+.blob-c1{background:var(--coral);top:-20%;left:-10%}
+.blob-c2{background:var(--lavender);bottom:-20%;right:-10%}
+.contact-label{font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:16px;position:relative;z-index:1}
+.contact h2{font-size:clamp(36px,6vw,64px);font-weight:800;letter-spacing:-2px;line-height:1.1;position:relative;z-index:1}
+.contact h2 .italic{font-family:var(--bask);font-style:italic;font-weight:400;color:var(--coral)}
+.contact-sub{font-size:15px;color:rgba(255,255,255,.4);margin-top:16px;position:relative;z-index:1}
+.contact-btns{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;position:relative;z-index:1}
+.contact-btn{padding:14px 28px;border:1px solid rgba(255,255,255,.1);border-radius:50px;color:var(--white);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-family:var(--mono);transition:all .3s}
+.contact-btn:hover{border-color:var(--coral);color:var(--coral);background:rgba(255,107,74,.05)}
+footer{padding:24px 40px;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:1px;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}
+@media(max-width:900px){nav{padding:16px 20px}.nav-links{display:none}.hero-content{padding:0 20px}.section{padding:60px 20px}.projects-container{grid-template-columns:1fr}.project-featured{grid-column:span 1;grid-template-columns:1fr}.project-featured .project-bg{min-height:220px}.about-grid{grid-template-columns:1fr}.contact{padding:80px 20px}footer{flex-direction:column;gap:8px;align-items:center}.section-num{display:none}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<nav><div class="nav-name">Ines Aouissaoui</div><div class="nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a></div></nav>
+<section class="hero"><div class="hero-gradient"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div><div class="hero-content"><div class="hero-label">AI Engineer</div><h1><span class="line">I build things</span><br><span class="line">that <span class="italic">think</span></span></h1><p class="hero-sub">Crafting intelligent systems across NLP, computer vision, and generative AI.</p><div class="hero-cta"><a href="#projects" class="cta-primary">See My Work</a><a href="#contact" class="cta-outline">Get in Touch</a></div></div><div class="hero-scroll">scroll<div class="arrow"></div></div></section>
+<div class="marquee"><div class="marquee-inner"><span class="marquee-item"><span class="dot"></span>Python</span><span class="marquee-item"><span class="dot"></span>PyTorch</span><span class="marquee-item"><span class="dot"></span>HuggingFace</span><span class="marquee-item"><span class="dot"></span>CLIP</span><span class="marquee-item"><span class="dot"></span>NLP</span><span class="marquee-item"><span class="dot"></span>Computer Vision</span><span class="marquee-item"><span class="dot"></span>FastAPI</span><span class="marquee-item"><span class="dot"></span>RAG</span><span class="marquee-item"><span class="dot"></span>LangChain</span><span class="marquee-item"><span class="dot"></span>Streamlit</span><span class="marquee-item"><span class="dot"></span>Transformers</span><span class="marquee-item"><span class="dot"></span>Generative AI</span><span class="marquee-item"><span class="dot"></span>Python</span><span class="marquee-item"><span class="dot"></span>PyTorch</span><span class="marquee-item"><span class="dot"></span>HuggingFace</span><span class="marquee-item"><span class="dot"></span>CLIP</span><span class="marquee-item"><span class="dot"></span>NLP</span><span class="marquee-item"><span class="dot"></span>Computer Vision</span><span class="marquee-item"><span class="dot"></span>FastAPI</span><span class="marquee-item"><span class="dot"></span>RAG</span><span class="marquee-item"><span class="dot"></span>LangChain</span><span class="marquee-item"><span class="dot"></span>Streamlit</span><span class="marquee-item"><span class="dot"></span>Transformers</span><span class="marquee-item"><span class="dot"></span>Generative AI</span></div></div>
+<section class="section" id="projects"><span class="section-num">01</span><div class="section-label reveal">Selected Projects</div><h2 class="section-title reveal">Work that <span class="accent">defines</span> me</h2><div class="projects-container">
+<div class="project-featured proj-coral reveal" onclick="window.open('https://github.com/InesAouissaoui/miles-assistant','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">01 · Flagship</div><h3 class="project-name">Miles Assistant</h3><p class="project-desc">A 6-month graduation project: AI assistant with RAG pipeline, OCR processing, vector search, chunk rating, and conversational memory. Built with Streamlit, LangChain, and ChromaDB.</p><div class="project-tags"><span class="project-tag">RAG</span><span class="project-tag">OCR</span><span class="project-tag">LangChain</span><span class="project-tag">Streamlit</span><span class="project-tag">Vector DB</span></div><a href="https://github.com/InesAouissaoui/miles-assistant" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-pink reveal reveal-delay-1" onclick="window.open('https://github.com/InesAouissaoui/stylematch-ai','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">02 · Fashion AI</div><h3 class="project-name">StyleMatch AI</h3><p class="project-desc">Upload a clothing photo, get outfit recommendations via CLIP analysis + color harmony theory. Neural network visual UI.</p><div class="project-tags"><span class="project-tag">CLIP</span><span class="project-tag">Fashion</span><span class="project-tag">FastAPI</span></div><a href="https://github.com/InesAouissaoui/stylematch-ai" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-gold reveal reveal-delay-2" onclick="window.open('https://github.com/InesAouissaoui/threadgen-ai','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">03 · Generative AI</div><h3 class="project-name">ThreadGen AI</h3><p class="project-desc">Text-to-fashion design studio. Generate color palettes, fabric recs, generative patterns, and mood boards from a prompt.</p><div class="project-tags"><span class="project-tag">CLIP</span><span class="project-tag">Generative Art</span><span class="project-tag">Pexels</span></div><a href="https://github.com/InesAouissaoui/threadgen-ai" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-green reveal reveal-delay-1" onclick="window.open('https://github.com/InesAouissaoui/autodiag-ai','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">04 · AI + Mechanics</div><h3 class="project-name">AutoDiag AI</h3><p class="project-desc">Describe a car problem in plain language. Get cause analysis, severity rating, cost estimates, and repair guidance.</p><div class="project-tags"><span class="project-tag">NLP</span><span class="project-tag">Diagnostics</span><span class="project-tag">FastAPI</span></div><a href="https://github.com/InesAouissaoui/autodiag-ai" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-lavender reveal reveal-delay-2" onclick="window.open('https://github.com/InesAouissaoui/smart-summarize','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">05 · NLP</div><h3 class="project-name">SmartSummarize</h3><p class="project-desc">BART-powered document summarizer with automatic chunking for long texts and compression statistics.</p><div class="project-tags"><span class="project-tag">BART</span><span class="project-tag">HuggingFace</span><span class="project-tag">Gradio</span></div><a href="https://github.com/InesAouissaoui/smart-summarize" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-mint reveal reveal-delay-1" onclick="window.open('https://github.com/InesAouissaoui/sentiviz','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">06 · Sentiment</div><h3 class="project-name">SentiViz</h3><p class="project-desc">Multilingual sentiment analysis (6 languages) with visual breakdowns, batch processing, and distribution charts.</p><div class="project-tags"><span class="project-tag">BERT</span><span class="project-tag">Multilingual</span><span class="project-tag">Matplotlib</span></div><a href="https://github.com/InesAouissaoui/sentiviz" target="_blank" class="project-link">View on GitHub →</a></div></div>
+<div class="project proj-sky reveal reveal-delay-2" onclick="window.open('https://github.com/InesAouissaoui/image-sense','_blank')"><div class="project-bg"><div class="color-field"></div><div class="overlay"></div></div><div class="project-info"><div class="project-num">07 · Computer Vision</div><h3 class="project-name">ImageSense</h3><p class="project-desc">Multi-model image classifier comparing ResNet-50, EfficientNet, and MobileNet with confidence charts.</p><div class="project-tags"><span class="project-tag">PyTorch</span><span class="project-tag">TorchVision</span><span class="project-tag">Gradio</span></div><a href="https://github.com/InesAouissaoui/image-sense" target="_blank" class="project-link">View on GitHub →</a></div></div>
+</div></section>
+<section class="section" id="about"><span class="section-num">02</span><div class="section-label reveal">About</div><h2 class="section-title reveal">The <span class="accent">engineer</span><br>behind the AI</h2><div class="about-grid"><div class="about-text reveal"><p><strong>I'm Ines Aouissaoui</strong> — an AI engineer passionate about building intelligent systems that solve real problems. My work spans NLP, computer vision, and generative AI, with a focus on taking models from research to production.</p><p>From a 6-month RAG assistant to fashion AI tools and vehicle diagnostics — I build <strong>full-stack AI solutions</strong> that combine deep learning with intuitive interfaces.</p><p>Currently seeking an <strong>alternance</strong> position in AI engineering, digital transformation, or data intelligence.</p></div><div class="skills-wrap reveal reveal-delay-1"><div class="skill-row"><div class="skill-icon">🧠</div><div class="skill-info"><div class="skill-name">Machine Learning</div><div class="skill-tools">PyTorch · TensorFlow · Scikit-learn</div></div></div><div class="skill-row"><div class="skill-icon">💬</div><div class="skill-info"><div class="skill-name">NLP & LLMs</div><div class="skill-tools">Transformers · LangChain · RAG · CLIP</div></div></div><div class="skill-row"><div class="skill-icon">👁</div><div class="skill-info"><div class="skill-name">Computer Vision</div><div class="skill-tools">OpenCV · YOLO · ResNet · ViT</div></div></div><div class="skill-row"><div class="skill-icon">🚀</div><div class="skill-info"><div class="skill-name">Deployment</div><div class="skill-tools">FastAPI · Docker · Gradio · Streamlit</div></div></div><div class="skill-row"><div class="skill-icon">📊</div><div class="skill-info"><div class="skill-name">Data</div><div class="skill-tools">Pandas · NumPy · Matplotlib · SQL</div></div></div><div class="skill-row"><div class="skill-icon">🐍</div><div class="skill-info"><div class="skill-name">Languages</div><div class="skill-tools">Python · JavaScript · C++ · SQL</div></div></div></div></div></section>
+<section class="contact" id="contact"><div class="blob-contact blob-c1"></div><div class="blob-contact blob-c2"></div><div class="contact-label reveal">Let's Connect</div><h2 class="reveal">Let's build something<br><span class="italic">remarkable</span> together</h2><p class="contact-sub reveal">Open for alternance positions in AI engineering</p><div class="contact-btns reveal"><a href="mailto:ine.aouiissaoui@gmail.com" class="contact-btn">Email</a><a href="https://github.com/InesAouissaoui" target="_blank" class="contact-btn">GitHub</a><a href="https://www.linkedin.com/in/inesaouissaoui/" target="_blank" class="contact-btn">LinkedIn</a></div></section>
+<footer><span>© 2026 Ines Aouissaoui</span><span>Built with passion & neural networks</span></footer>
+<script>
+const cursor=document.getElementById('cursor');document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a,button,.project,.project-featured').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'))});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})})});
+document.querySelectorAll('.project,.project-featured').forEach(card=>{card.addEventListener('mousemove',e=>{const rect=card.getBoundingClientRect();const x=(e.clientX-rect.left)/rect.width-.5;const y=(e.clientY-rect.top)/rect.height-.5;card.style.transform=`translateY(-6px) perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+</script>
+</body>
+</html>
